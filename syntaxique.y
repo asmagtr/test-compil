@@ -255,27 +255,18 @@ CONTROLE: R1_2_CONTROLE kwELSE ao INST af
               }
 ;
 
-CONDITION: po EXPRESSION pt OPCOMP pt EXPRESSION pf
+CONDITION: po EXPRESSION OPCOMP EXPRESSION pf
               { 
                 printf("\n\n %s declaration correct!\n\n",stri);
               }
-         | po CONDITION pt OPLOG pt CONDITION pf
+         | po CONDITION  OPLOG  CONDITION pf
               {
                printf("\n\n %s declaration correct!\n\n",stri);
               }
          | po CONDITION pf
               {
                 printf("\n\n %s declaration correct!\n\n",stri);
-              }
-        | po INDEX OPCOMP EXPRESSION pf
-              {
-
-              }
-        | po INDEX OPCOMP EXPRESSION pf
-              {
-
-              }
-            
+              }         
 ;               
 
 OPLOG: kwAND {$$=strdup($1);}
@@ -289,7 +280,7 @@ OPCOMP: kwGT {$$=strdup($1);}
       | kwLT {$$=strdup($1);}
       | kwNE {$$=strdup($1);}
 ;
-BOUCLE: kwFOR po idf aff EXPRESSION dp EXPRESSION dp CONDITION pf ao INSTS af
+BOUCLE: kwFOR po AFFECTATION dp EXPRESSION dp CONDITION pf ao INSTS af
             {
               printf("\n\n %s declaration correct!\n\n",stri);
             }
