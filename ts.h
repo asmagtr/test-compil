@@ -305,53 +305,40 @@ void diviserChaine(const char *chaine, char *partie1, char *partie2) {
 
 // L'affichage du contenu de la table des symboles
 void afficher() {
-    printf("\n=== TABLE DES SYMBOLES ===\n\n");
-    
-    // Affichage de la table des éléments
-    printf("--- Elements ---\n");
-    printf("%-20s %-15s %-15s %-15s %-15s %-15s %-15s\n", 
-           "Nom", "Code", "Type", "Valeur", "Taille", "Colonnes", "Update");
-    printf("--------------------------------------------------------------------------------\n");
-    
-    Element* currentElement = table.tab;
-    while (currentElement != NULL) {
-        printf("%-20s %-15s %-15s %-15s %-15s %-15s %-15s\n",
-               currentElement->name,
-               currentElement->code,
-               currentElement->type,
-               currentElement->val,
-               currentElement->taille,
-               currentElement->colonne,
-               currentElement->update);
-        currentElement = currentElement->next;
+    // Affichage de la table des symboles IDF et constantes
+    Element* current = table.tab;
+    printf("/************************* Table des symboles IDF et constantes *************************/\n");
+    printf("________________________________________________________________________________________________________________________________\n");
+    printf("\t|\t\t   Nom_Entite    \t\t| \tCode_Entite\t| Type_Entite |  Val_Entite  |  Taille  | Colonnes |  Last update |\n");
+    printf("________________________________________________________________________________________________________________________________\n");
+
+    while (current != NULL) {
+        printf("\t| %45s |  %20s | %11s | %12s | %8s | %8s | %12s |\n", 
+               current->name, current->code, current->type, current->val, current->taille, current->colonne, current->update);
+        current = current->next;
     }
-    printf("\n");
-    
-    // Affichage de la table des mots clés
-    printf("--- Mots Cles ---\n");
-    printf("%-20s %-15s\n", "Nom", "Type");
-    printf("--------------------------------\n");
-    
-    MotCle* currentMotCle = table.tabm;
-    while (currentMotCle != NULL) {
-        printf("%-20s %-15s\n",
-               currentMotCle->name,
-               currentMotCle->type);
-        currentMotCle = currentMotCle->next;
+
+    // Affichage de la table des symboles mots clés
+    MotCle* currentKeyword = table.tabm;
+    printf("\n/************************* Table des symboles mots clés *************************/\n");
+    printf("____________________________________\n");
+    printf("\t|  NomEntite  |  CodeEntite |\n");
+    printf("____________________________________\n");
+
+    while (currentKeyword != NULL) {
+        printf("\t|%12s |%12s |\n", currentKeyword->name, currentKeyword->type);
+        currentKeyword = currentKeyword->next;
     }
-    printf("\n");
-    
-    // Affichage de la table des séparateurs
-    printf("--- Separateurs ---\n");
-    printf("%-20s %-15s\n", "Nom", "Type");
-    printf("--------------------------------\n");
-    
-    Separateur* currentSeparateur = table.tabs;
-    while (currentSeparateur != NULL) {
-        printf("%-20s %-15s\n",
-               currentSeparateur->name,
-               currentSeparateur->type);
-        currentSeparateur = currentSeparateur->next;
+
+    // Affichage de la table des symboles séparateurs
+    Separateur* currentSeparator = table.tabs;
+    printf("\n/************************* Table des symboles séparateurs *************************/\n");
+    printf("___________________________________\n");
+    printf("\t| NomEntite |  CodeEntite |\n");
+    printf("___________________________________\n");
+
+    while (currentSeparator != NULL) {
+        printf("\t|%10s |%12s |\n", currentSeparator->name, currentSeparator->type);
+        currentSeparator = currentSeparator->next;
     }
-    printf("\n");
 }

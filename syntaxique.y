@@ -86,7 +86,7 @@ DECSOLO: TYPE idf LISTVAR pvg
               }
 ; 
 
-DECTAB: TYPE idf po integer pf LISTVAR pvg 
+DECTAB: TYPE idf co integer cf LISTVAR pvg 
             { 
              printf("\n\n %s declaration correct!\n\n",stri);
             }
@@ -357,7 +357,10 @@ int yyerror(char *msg) {
 
 int main(int argc,char *argv[]){
   file_name=argv[1];
+  initialisation();
   yyparse();
+  afficher();
+  affiche_quad();
   return 0;
 }
 
