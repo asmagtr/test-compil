@@ -1,13 +1,19 @@
 VAR_GLOBAL {
-FLOAT b,c ;
 INTEGER a ;
-INTEGER W;
+INTEGER W,A,X,B,Bb,E,Aa,Cc,b,c;
 INTEGER d[5];
 }
 
 INSTRUCTION {
-a=5 ;
-A=(X+7+B)/ (5.3-(-2)) ; B= 0;
-WRITE ("Donner la valeur de A :"); READ (A); WRITE ("La Valeur de A est ", A, ".");
-IF (Aa > Bb) { Cc=E+2.6; } ELSE{ Cc=0; }
+a=5 ; 
+A=(X+7+B)+3;
+Aa=1;
+Bb=3;
+E=a;
+B=0;
+IF (Aa > Bb) { 
+    Cc=E+2; 
+    } ELSE{ 
+        Cc=0; %% sinon on affecte la val 0
+         }
 }
