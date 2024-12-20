@@ -7,8 +7,8 @@ INTEGER d[5];
 INSTRUCTION {
 a=5 ; 
 A=(X+7+B)+3;
-Aa=1;
-Bb=3;
+Aa=1- a;
+Bb= 9 / 3 ;
 E=a;
 B=0;
 IF (Aa > Bb) { 

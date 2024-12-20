@@ -915,7 +915,7 @@ YY_RULE_SETUP
 #line 197 "lexical.l"
 {    
     if (atoi(yytext) >= -32768 && atoi(yytext) <= 32767) { 
-        rechercher(yytext, "INT", "-1", yytext, "-1", "-1", 0);
+        rechercher(yytext, "INTEGER", "-1", yytext, "-1", "-1", 0);
         ECHO;
         nb_character += strlen(yytext);
         yylval.str=strdup(yytext);
