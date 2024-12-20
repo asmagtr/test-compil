@@ -118,7 +118,7 @@ DECSOLO: TYPE idf LISTVAR pvg
                   miseajour($2,"Variable",$1,partie1_2,"/","/","SEMANTIQUE");
 
                 if (strcmp($1,partie1_1)!=0 && strcmp(partie1_1,"/")!=0) {
-                  if(strcmp($1,"REAL")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
+                  if(strcmp($1,"FLOAT")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
                     printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
                     printf("HIII 2!");
                     YYABORT;
@@ -448,12 +448,6 @@ INDEX: idf
             printf("\nFile '%s', line %d, character %d: semantic error : Unexpected index type '%s'.\n",file_name,nb_line,nb_character,$1);
             YYABORT;
           }
-          else{
-            if(atof($1)<1){
-              printf("\nFile '%s', line %d, character %d: semantic error : Negative index value.\n",file_name,nb_line,nb_character);
-              YYABORT;
-            }
-          }
         }
      | integer 
         {
@@ -566,9 +560,29 @@ OPCOMP: kwGT {$$=strdup($1);}
       | kwLT {$$=strdup($1);}
       | kwNE {$$=strdup($1);}
 ;
-BOUCLE: kwFOR po AFFECTATION dp EXPRESSION dp INDEX pf ao INSTS af
+BOUCLE: kwFOR po AFFECTATION dp INDEX dp INDEX pf ao INSTS af
             {
-              printf("\n\n %s declaration correct!\n\n",stri);
+                int debut_for = qc;
+                char index_start[20];
+                strcpy(index_start, $5);
+
+                char index_end[20];
+                strcpy(index_end, $7);
+
+                sprintf(temp, "T%d", tmp);
+                remplir_quad("<=", index_start, index_end, temp);
+                tmp++;
+
+                remplir_quad("BZ", temp, "<vide>", "<vide>");
+                int condition_quad = qc - 1;
+
+                remplir_quad("+", index_start, "1", index_start);
+    
+                sprintf(i, "%d", debut_for);
+                remplir_quad("BR", i, "<vide>", "<vide>");
+      
+                sprintf(i, "%d", qc);
+                mise_jr_quad(condition_quad, 2, i);
             }
 ;
 MEMBREIDF : idf                      

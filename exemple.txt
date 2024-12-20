@@ -1,8 +1,7 @@
 VAR_GLOBAL {
-INTEGER W,A,X,B,Bb,E,Aa,Cc,b,c,a;
+INTEGER W,A,X,B,Bb,E,Aa,Cc,b,c,a,i,n;
 INTEGER d[5];
 CONST INTEGER h = 5;
-FLOAT F=1.5;
 }
 
 INSTRUCTION {
@@ -11,6 +10,7 @@ Aa=A;
 Bb=h+a;
 Bb= 9 * 3 ;
 B=0;
+FOR(i =2 :2 :n){ i=i+1 ;}
 IF (Aa > Bb) { 
     Cc=E+2; 
     } ELSE{ 
