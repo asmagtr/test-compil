@@ -260,5 +260,98 @@ bool verif_index(char entite[],char code[],char index[]){
     while (current != NULL && (strcmp(entite, current->name) != 0  || strcmp(code,current->code) != 0)) {
         current = current->next;
     }
+    if (current != NULL) {
+        if(atol(current->colonne)>=atol(index))
+            return true;
+    }
+    return false;
 
+}
+
+// compare la taille d'une var de type char dans la ts avec la taille d'une chaine en argument (char check[])
+bool verif_char(char entite[],char code[],char check[]){
+    Element* current = table.tab;
+    while (current != NULL && (strcmp(entite, current->name) != 0 || strcmp(code,current->code) != 0)) {
+        current = current->next;
+    }
+    if (current != NULL) {
+        if(atof(current->taille)>=strlen(check)-2)
+            return true;
+    }
+    return false;
+}
+
+//diviser une chaine en 2 parties avec le separateur "-" Exemple:(chaine="text-test" -> partie1="text" partie2="test")
+void diviserChaine(const char *chaine, char *partie1, char *partie2) {
+    // Recherche de la position du séparateur "-"
+    const char *separateur = strchr(chaine, '-');
+
+    if (separateur) {
+        // Calcul de la longueur de la première partie
+        size_t longueurPartie1 = separateur - chaine;
+
+        // Copie de la première partie dans partie1
+        strncpy(partie1, chaine, longueurPartie1);
+        partie1[longueurPartie1] = '\0';  // Ajout du caractère de fin de chaîne
+
+        // Copie de la deuxième partie dans partie2
+        strcpy(partie2, separateur + 1);
+    } else {
+        // Si le séparateur n'est pas trouvé, partie1 reçoit la chaîne entière
+        strcpy(partie1, chaine);
+        partie2[0] = '\0';  // La deuxième partie est une chaîne vide
+    }
+}
+
+// L'affichage du contenu de la table des symboles
+void afficher() {
+    printf("\n=== TABLE DES SYMBOLES ===\n\n");
+    
+    // Affichage de la table des éléments
+    printf("--- Elements ---\n");
+    printf("%-20s %-15s %-15s %-15s %-15s %-15s %-15s\n", 
+           "Nom", "Code", "Type", "Valeur", "Taille", "Colonnes", "Update");
+    printf("--------------------------------------------------------------------------------\n");
+    
+    Element* currentElement = table.tab;
+    while (currentElement != NULL) {
+        printf("%-20s %-15s %-15s %-15s %-15s %-15s %-15s\n",
+               currentElement->name,
+               currentElement->code,
+               currentElement->type,
+               currentElement->val,
+               currentElement->taille,
+               currentElement->colonne,
+               currentElement->update);
+        currentElement = currentElement->next;
+    }
+    printf("\n");
+    
+    // Affichage de la table des mots clés
+    printf("--- Mots Cles ---\n");
+    printf("%-20s %-15s\n", "Nom", "Type");
+    printf("--------------------------------\n");
+    
+    MotCle* currentMotCle = table.tabm;
+    while (currentMotCle != NULL) {
+        printf("%-20s %-15s\n",
+               currentMotCle->name,
+               currentMotCle->type);
+        currentMotCle = currentMotCle->next;
+    }
+    printf("\n");
+    
+    // Affichage de la table des séparateurs
+    printf("--- Separateurs ---\n");
+    printf("%-20s %-15s\n", "Nom", "Type");
+    printf("--------------------------------\n");
+    
+    Separateur* currentSeparateur = table.tabs;
+    while (currentSeparateur != NULL) {
+        printf("%-20s %-15s\n",
+               currentSeparateur->name,
+               currentSeparateur->type);
+        currentSeparateur = currentSeparateur->next;
+    }
+    printf("\n");
 }
