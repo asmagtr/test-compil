@@ -182,7 +182,7 @@ FOR {
 
 {real} {
     if (atof(yytext) >= -32768.32767 && atof(yytext) <= 32767.32767) {
-        rechercher(yytext, "CONST_REEL", "-1", yytext, "-1", "-1", 0);
+        rechercher(yytext, "REEL", "-1", yytext, "-1", "-1", 0);
         ECHO;
         nb_character += strlen(yytext);
         yylval.str=strdup(yytext);
@@ -196,7 +196,7 @@ FOR {
 
 {integer} {    
     if (atoi(yytext) >= -32768 && atoi(yytext) <= 32767) { 
-        rechercher(yytext, "CONST_INT", "-1", yytext, "-1", "-1", 0);
+        rechercher(yytext, "INT", "-1", yytext, "-1", "-1", 0);
         ECHO;
         nb_character += strlen(yytext);
         yylval.str=strdup(yytext);
@@ -209,7 +209,7 @@ FOR {
 }
 
 {character} {
-    rechercher(yytext, "CONST_CHAR", "-1", yytext, "-1", "-1", 0);
+    rechercher(yytext, "CHAR", "-1", yytext, "-1", "-1", 0);
     ECHO;
     nb_character += strlen(yytext);
     sprintf(x,"%d",strlen(yytext)-2);
