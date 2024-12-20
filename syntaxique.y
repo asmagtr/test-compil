@@ -68,6 +68,7 @@ MAIN: kwINSTRUCTION ao INST af { printf("\n\n declaration main correct!\n\n");}
 
 DEC: DECSOLO DEC 
    | DECTAB  DEC
+   | DECCONST DEC
    |
 ;
 
@@ -76,10 +77,32 @@ TYPE: kwINTEGER  {$$=strdup($1);strcpy(savet,$1);}
     | kwCHARACTER  {$$=strdup($1);strcpy(savet,$1);}
 ;
 
+DECCONST:kwCONST TYPE idf aff EXPRESSION pvg 
+            {
+                diviserChaine($5,partie1_1,partie1_2);
+                if (idf_existe($3,"Variable") || idf_existe($3,"Vecteur") || idf_existe($3,"Constante")) {
+                  printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                  printf("I AM HERE 1");
+                  YYABORT;
+                }
+                  miseajour($3,"Constante",$2,partie1_2,"/","/","SEMANTIQUE");
+
+                if (strcmp($2,partie1_1)!=0 && strcmp(partie1_1,"/")!=0) {
+                  if(strcmp($2,"REAL")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
+                    printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                    printf("HIII 1!");
+                    YYABORT;
+                  }
+                }
+                remplir_quad("=",partie1_2,"<vide>",$3);
+            }
+;
+
 DECSOLO: TYPE idf LISTVAR pvg 
               { 
-                if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur")) {
+                if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") || idf_existe($2,"Constante")) {
                   printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                  printf("I AM HERE 2");
                   YYABORT;
                 }
                   miseajour($2,"Variable",$1,"-1","/","/","SYNTAXIQUE");
@@ -87,8 +110,9 @@ DECSOLO: TYPE idf LISTVAR pvg
        | TYPE idf aff EXPRESSION LISTVAR pvg 
               { 
                 diviserChaine($4,partie1_1,partie1_2);
-                if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur")) {
+                if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") || idf_existe($2,"Constante")) {
                   printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                  printf("I AM HERE 3");
                   YYABORT;
                 }
                   miseajour($2,"Variable",$1,partie1_2,"/","/","SEMANTIQUE");
@@ -96,6 +120,7 @@ DECSOLO: TYPE idf LISTVAR pvg
                 if (strcmp($1,partie1_1)!=0 && strcmp(partie1_1,"/")!=0) {
                   if(strcmp($1,"REAL")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
                     printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                    printf("HIII 2!");
                     YYABORT;
                   }
                 }
@@ -106,8 +131,9 @@ DECSOLO: TYPE idf LISTVAR pvg
 
 DECTAB: TYPE idf co integer cf LISTVAR pvg 
             { 
-              if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur")) {
+              if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") || idf_existe($2,"Constante")) {
                 printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                printf("I AM HERE 4");
                 YYABORT;
               }
 
@@ -129,8 +155,9 @@ LISTVAR: LISTVARSOLO
 
 LISTVARSOLO: vg idf LISTVAR 
                   {  
-                    if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur")) {
+                    if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") || idf_existe($2,"Constante")) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                      printf("I AM HERE 5");
                       YYABORT;
                     }
     
@@ -139,14 +166,16 @@ LISTVARSOLO: vg idf LISTVAR
            | vg idf aff EXPRESSION LISTVAR 
                   { 
                     diviserChaine($4,partie1_1,partie1_2);
-                    if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") ) {
+                    if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") || idf_existe($2,"Constante") ) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                      printf("I AM HERE 6");
                       YYABORT;
                     }
                       miseajour($2,"Variable",savet,partie1_2,"/","/","SEMANTIQUE");
                     if (strcmp(getType($2,"Variable"),partie1_1)!=0 && strcmp(partie1_1,"/")!=0) {
                       if(strcmp(getType($2,"Variable"),"REAL")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
                         printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                        printf("HIII 3!");
                         YYABORT;
                       }
                     }
@@ -162,8 +191,9 @@ LISTVARSOLO: vg idf LISTVAR
 
 LISTVARTAB: vg idf po integer pf LISTVAR 
                   { 
-                    if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") ) {
+                    if (idf_existe($2,"Variable") || idf_existe($2,"Vecteur") || idf_existe($2,"Constante")) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Double declaration '%s'.\n",file_name,nb_line,nb_character,$2);
+                      printf("I AM HERE 7");
                       YYABORT;
                     }
                       miseajour($2,"Vecteur",savet,"/",$4,$4,"SYNTAXIQUE");
@@ -189,8 +219,13 @@ INSTS: ENTREE      pvg
 
 AFFECTATION: idf aff EXPRESSION  
                   { 
-                    if (!idf_existe($1,"Variable") && !idf_existe($1,"Parametre")) {
+                    if(idf_existe($1,"Constante")){
+                      printf("\nFile '%s', line %d, character %d: semantic error : Can't change the value of a Constante '%s'.\n",file_name,nb_line,nb_character,$1);
+                      YYABORT;
+                    }
+                    if (!idf_existe($1,"Variable")) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+                      printf("HELLO 1");
                       YYABORT;
                     }
                     diviserChaine($3,partie1_1,partie1_2);
@@ -198,6 +233,8 @@ AFFECTATION: idf aff EXPRESSION
                     if (strcmp(typeIDF,partie1_1)!=0 && strcmp(typeIDF,"/")!=0 && strcmp(partie1_1,"/")!=0) {
                       if(strcmp(typeIDF,"REAL")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
                           printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                          printf("HIII 4!");
+                          
                         YYABORT;
                       }
                     }
@@ -212,16 +249,23 @@ AFFECTATION: idf aff EXPRESSION
                   }
            | idf co INDEX cf aff EXPRESSION
                   { 
+                    if(idf_existe($1,"Constante")){
+                      printf("\nFile '%s', line %d, character %d: semantic error : Can't change the value of a Constante '%s'.\n",file_name,nb_line,nb_character,$1);
+                      YYABORT;
+                    }
                     diviserChaine($6,partie1_1,partie1_2);
-                    if (!idf_existe($1,"Vecteur") && !idf_existe($1,"Parametre")) {
+                    if (!idf_existe($1,"Vecteur")) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+                      printf("HELLO 2");
                       YYABORT;
                     }
                     strcpy(typeIDF,getType($1,"Vecteur"));
                     if (strcmp(typeIDF,partie1_1)!=0 && strcmp(typeIDF,"/")!=0 && strcmp(partie1_1,"/")!=0) {
                       if(strcmp(typeIDF,"REAL")!=0 || strcmp(partie1_1,"INTEGER")!=0 ){
                         printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                        printf("HIII 5!");
                         YYABORT;
+
                       }
                     }
                     if(strcmp(typeIDF,"CHARACTER")==0 && strcmp(partie1_1,"CHARACTER")==0 ){
@@ -244,6 +288,7 @@ EXPRESSION: EXPRESSION plus EXPRESSION
                     sprintf(temp,"T%d",tmp);
                     if (strcmp(partie1_1,"CHARACTER") == 0 || strcmp(partie1_1,"LOGICAL") == 0 || strcmp(partie2_1,"CHARACTER") == 0 || strcmp(partie2_1,"LOGICAL") == 0) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                      printf("HIII 7!");
                       YYABORT;
                     }
                     if (strcmp(partie1_1,"REAL") == 0 || strcmp(partie2_1,"REAL") == 0 && strcmp(partie1_1,"/")!=0 && strcmp(partie2_1,"/")!=0){
@@ -267,6 +312,7 @@ EXPRESSION: EXPRESSION plus EXPRESSION
                     sprintf(temp,"T%d",tmp);
                     if (strcmp(partie1_1,"CHARACTER") == 0 || strcmp(partie1_1,"LOGICAL") == 0 || strcmp(partie2_1,"CHARACTER") == 0 || strcmp(partie2_1,"LOGICAL") == 0) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                      printf("HIII 8!");
                       YYABORT;
                     }
                     if (strcmp(partie1_1,"REAL") == 0 || strcmp(partie2_1,"REAL") == 0 && strcmp(partie1_1,"/")!=0 && strcmp(partie2_1,"/")!=0){
@@ -289,6 +335,7 @@ EXPRESSION: EXPRESSION plus EXPRESSION
                     sprintf(temp,"T%d",tmp);
                     if (strcmp(partie1_1,"CHARACTER") == 0 || strcmp(partie1_1,"LOGICAL") == 0 || strcmp(partie2_1,"CHARACTER") == 0 || strcmp(partie2_1,"LOGICAL") == 0) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                      printf("HIII 9!");
                       YYABORT;
                     }
                     if (strcmp(partie1_1,"REAL") == 0 || strcmp(partie2_1,"REAL") == 0 && strcmp(partie1_1,"/")!=0 && strcmp(partie2_1,"/")!=0){
@@ -316,6 +363,7 @@ EXPRESSION: EXPRESSION plus EXPRESSION
                     }
                     if (strcmp(partie1_1,"CHARACTER") == 0 || strcmp(partie1_1,"LOGICAL") == 0 || strcmp(partie2_1,"CHARACTER") == 0 || strcmp(partie2_1,"LOGICAL") == 0) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                      printf("HIII 10!");
                       YYABORT;
                     }
                     strcpy(cat,"REAL-");
@@ -327,21 +375,22 @@ EXPRESSION: EXPRESSION plus EXPRESSION
 
           | idf  
                   { 
-                    if (!idf_existe($1,"Variable") && !idf_existe($1,"Parametre")) {
+                    if (!idf_existe($1,"Variable") && !idf_existe($1,"Constante")) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+                      printf("HELLO 3");
                       YYABORT;
                     }
                     strcpy(ch,"-");
                     strcat(ch,$1);
-                    if (idf_existe($1,"Variable")) strcpy(cat,getType($1,"Variable"));
-                    if (idf_existe($1,"Parametre")) strcpy(cat,getType($1,"Parametre"));
+                    if (idf_existe($1,"Variable") || idf_existe($1,"Constante")) strcpy(cat,getType($1,"Variable"));
                     strcat(cat,ch);
                     $$=strdup(cat);
                   }      
           | idf co INDEX cf 
                   {
-                    if (!idf_existe($1,"Vecteur") && !idf_existe($1,"Parametre")) {
+                    if (!idf_existe($1,"Vecteur")) {
                       printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+                      printf("HELLO 4");
                       YYABORT;
                     }
                     if (!verif_index($1,"Vecteur",$3)) {
@@ -353,7 +402,6 @@ EXPRESSION: EXPRESSION plus EXPRESSION
                     strcat(ch,tab);
                     strcpy(tab," ");
                     if (idf_existe($1,"Vecteur")) strcpy(cat,getType($1,"Vecteur"));
-                    if (idf_existe($1,"Parametre")) strcpy(cat,getType($1,"Parametre"));
                     strcat(cat,ch);
                     $$=strdup(cat);
                 }
@@ -390,8 +438,9 @@ EXPRESSION: EXPRESSION plus EXPRESSION
 
 INDEX: idf 
         { 
-          if (!idf_existe($1,"Variable") && !idf_existe($1,"Parametre")) {
+          if (!idf_existe($1,"Variable") && !idf_existe($1,"Constante")) {
             printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+            printf("HELLO 5");
             YYABORT;
           }
           strcpy(typeIDF,getType($1,"Variable"));
@@ -485,6 +534,7 @@ CONDITION: po EXPRESSION OPCOMP EXPRESSION pf
                 if (strcmp(partie2_1,partie1_1)!=0 && strcmp(partie1_1,"/")!=0 && strcmp(partie2_1,"/")!=0) {
                   if(!((strcmp(partie1_1,"REAL")==0 && strcmp(partie2_1,"INTEGER")==0) || (strcmp(partie2_1,"REAL")==0 && strcmp(partie1_1,"INTEGER")==0))){
                     printf("\nFile '%s', line %d, character %d: semantic error : Type incompatibility.\n",file_name,nb_line,nb_character);
+                    printf("HIII 13!");
                     YYABORT;
                   }
                 }
@@ -523,8 +573,9 @@ BOUCLE: kwFOR po AFFECTATION dp EXPRESSION dp INDEX pf ao INSTS af
 ;
 MEMBREIDF : idf                      
                 { 
-                  if (!idf_existe($1,"Variable") && !idf_existe($1,"Parametre")) {
+                  if (!idf_existe($1,"Variable") && !idf_existe($1,"Constante")) {
                     printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+                    printf("HELLO 6");
                     YYABORT;
                   }
                   $$=strdup($1);
@@ -533,6 +584,7 @@ MEMBREIDF : idf
                 { 
                   if (!idf_existe($1,"Vecteur")) {
                     printf("\nFile '%s', line %d, character %d: semantic error : Undeclared variable '%s'.\n",file_name,nb_line,nb_character,$1);
+                    printf("HELLO 7");
                     YYABORT;
                   }
                   $$=strdup($1);

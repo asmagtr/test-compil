@@ -243,7 +243,7 @@ bool idf_existe(char entite[],char code[]){
 char* getType(char entite[],char code[]){
    
     Element* current = table.tab;
-        while (current != NULL && (strcmp(entite, current->name) != 0|| strcmp(code,current->code) != 0)) {
+        while (current != NULL && (strcmp(entite, current->name) != 0)) {
             current = current->next;
         }
     if (current != NULL) {

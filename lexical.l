@@ -182,7 +182,7 @@ FOR {
 
 {real} {
     if (atof(yytext) >= -32768.32767 && atof(yytext) <= 32767.32767) {
-        rechercher(yytext, "REEL", "-1", yytext, "-1", "-1", 0);
+        rechercher(yytext, "REAL", "-1", yytext, "-1", "-1", 0);
         ECHO;
         nb_character += strlen(yytext);
         yylval.str=strdup(yytext);
