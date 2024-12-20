@@ -290,7 +290,7 @@ MEMBREIDF : idf
                  printf("\n\n %s declaration correct!\n\n",stri);
                   $$=strdup($1);
                 }
-          | idf po INDEX pf 
+          | idf co INDEX cf 
                 { 
                   printf("\n\n %s declaration correct!\n\n",stri);
                   $$=strdup($1);
