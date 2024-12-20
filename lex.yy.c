@@ -445,8 +445,7 @@ char *yytext;
 	extern char *file_name;
 	extern YYSTYPE yylval;
 	char x[20];
-	extern int emp;
-#line 450 "lex.yy.c"
+#line 449 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -597,10 +596,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 22 "lexical.l"
+#line 21 "lexical.l"
 
 
-#line 604 "lex.yy.c"
+#line 603 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -685,7 +684,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "lexical.l"
+#line 23 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -694,7 +693,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 31 "lexical.l"
+#line 30 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -704,7 +703,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 38 "lexical.l"
+#line 37 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -714,7 +713,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 45 "lexical.l"
+#line 44 "lexical.l"
 {
 	ECHO; 
 	nb_character += strlen(yytext);
@@ -724,7 +723,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 52 "lexical.l"
+#line 51 "lexical.l"
 {
 	ECHO; 
 	nb_character += strlen(yytext);
@@ -734,7 +733,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 59 "lexical.l"
+#line 58 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -744,7 +743,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 66 "lexical.l"
+#line 65 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -754,7 +753,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 74 "lexical.l"
+#line 73 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -764,7 +763,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 81 "lexical.l"
+#line 80 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -774,7 +773,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 88 "lexical.l"
+#line 87 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -784,7 +783,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 95 "lexical.l"
+#line 94 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -794,7 +793,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 102 "lexical.l"
+#line 101 "lexical.l"
 {
 	ECHO; 
 	nb_character += strlen(yytext);
@@ -804,7 +803,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 112 "lexical.l"
+#line 111 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -814,7 +813,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 118 "lexical.l"
+#line 117 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -824,7 +823,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 124 "lexical.l"
+#line 123 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -834,7 +833,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 130 "lexical.l"
+#line 129 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -844,7 +843,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 136 "lexical.l"
+#line 135 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -854,7 +853,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 142 "lexical.l"
+#line 141 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -864,7 +863,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 148 "lexical.l"
+#line 147 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -874,7 +873,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 154 "lexical.l"
+#line 153 "lexical.l"
 { 
 	ECHO;
 	nb_character += strlen(yytext);
@@ -884,7 +883,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 163 "lexical.l"
+#line 162 "lexical.l"
 {
 	if (atof(yytext) >= -32768.32767 && atof(yytext) <= 32767.32767) {
 		ECHO;
@@ -900,7 +899,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 175 "lexical.l"
+#line 174 "lexical.l"
 {	
 	if (atoi(yytext) >= -32768 && atoi(yytext) <= 32767) { 
 		ECHO;
@@ -916,7 +915,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 187 "lexical.l"
+#line 186 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -928,7 +927,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 195 "lexical.l"
+#line 194 "lexical.l"
 {
 	if(strlen(yytext)>10){		
 		printf("File '%s', line %d, character %d: lexical error\n",file_name,nb_line,nb_character);
@@ -942,7 +941,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 206 "lexical.l"
+#line 205 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -952,7 +951,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 212 "lexical.l"
+#line 211 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -962,7 +961,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 218 "lexical.l"
+#line 217 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -972,7 +971,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 224 "lexical.l"
+#line 223 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -982,7 +981,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 231 "lexical.l"
+#line 230 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -992,7 +991,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 238 "lexical.l"
+#line 237 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1002,7 +1001,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 244 "lexical.l"
+#line 243 "lexical.l"
 {
     ECHO;
 	nb_character += strlen(yytext);
@@ -1012,7 +1011,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 250 "lexical.l"
+#line 249 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1022,7 +1021,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 256 "lexical.l"
+#line 255 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1032,7 +1031,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 262 "lexical.l"
+#line 261 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1042,7 +1041,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 270 "lexical.l"
+#line 269 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1052,7 +1051,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 277 "lexical.l"
+#line 276 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1062,7 +1061,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 283 "lexical.l"
+#line 282 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1072,7 +1071,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 290 "lexical.l"
+#line 289 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1082,7 +1081,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 297 "lexical.l"
+#line 296 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1092,7 +1091,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 304 "lexical.l"
+#line 303 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1100,7 +1099,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 308 "lexical.l"
+#line 307 "lexical.l"
 {
 	ECHO;
 	nb_character += strlen(yytext);
@@ -1108,12 +1107,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 312 "lexical.l"
+#line 311 "lexical.l"
 {ECHO; nb_line++; nb_character=0;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 313 "lexical.l"
+#line 312 "lexical.l"
 {
 	nb_character += strlen(yytext);
 	printf("File '%s', line %d, character %d: lexical error\n",file_name,nb_line,nb_character);
@@ -1121,10 +1120,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 317 "lexical.l"
+#line 316 "lexical.l"
 ECHO;
 	YY_BREAK
-#line 1128 "lex.yy.c"
+#line 1127 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2010,4 +2009,4 @@ int main()
 	return 0;
 	}
 #endif
-#line 317 "lexical.l"
+#line 316 "lexical.l"

@@ -8,7 +8,6 @@
 	extern char *file_name;
 	extern YYSTYPE yylval;
 	char x[20];
-	extern int emp;
 %}
 
 letter [a-zA-Z]

@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include "ts.h"
+#include "quad.h"
 extern int yylex(); // Declare the lexer function
 extern int yylineno; // Declare the line number variable if used
 
@@ -9,8 +11,6 @@ int nb_line=1;
 int nb_character=0;
 char *file_name;
 char taille[20];
-char empla[20];
-int emp=1;
 char typeIDF[20];
 char savet[20];
 int param=0;
@@ -280,7 +280,7 @@ OPCOMP: kwGT {$$=strdup($1);}
       | kwLT {$$=strdup($1);}
       | kwNE {$$=strdup($1);}
 ;
-BOUCLE: kwFOR po AFFECTATION dp EXPRESSION dp CONDITION pf ao INSTS af
+BOUCLE: kwFOR po AFFECTATION dp EXPRESSION dp INDEX pf ao INSTS af
             {
               printf("\n\n %s declaration correct!\n\n",stri);
             }
